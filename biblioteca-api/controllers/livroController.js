@@ -69,14 +69,14 @@ exports.atualizarLivro = async (req, res) => {
 };
 
 // Deletar um livro por ID
+
 exports.deletarLivro = async (req, res) => {
   try {
-    const livro = await Livro.findById(req.params.id);
-    if (livro == null) {
+    const result = await Livro.deleteOne({ _id: req.params.id });
+    if (result.deletedCount === 0) {
       return res.status(404).json({ message: "Livro não encontrado" });
     }
 
-    await livro.remove();
     res.json({ message: "Livro deletado com sucesso" });
   } catch (err) {
     res.status(500).json({ message: err.message });
