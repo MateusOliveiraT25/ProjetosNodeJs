@@ -20,20 +20,20 @@ h1.center {
 }
 
 /* Estilo para o botão de adicionar livro */
-button.add {
+button {
     display: block;
     margin: 0 auto 20px auto;
-    padding: 8px 16px;
-    font-size: 14px;
+    padding: 10px 20px;
+    font-size: 16px;
     color: #fff;
     background-color: #007bff;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-button.add:hover {
+button:hover {
     background-color: #0056b3;
 }
 
@@ -74,14 +74,14 @@ td:last-child {
     text-align: center;
 }
 
-/* Estilos específicos para botões e links de ação */
+/* Estilos comuns para os botões e links de ação */
 button,
 a.action,
 a.edit,
 a.delete {
     display: inline-block;
-    padding: 6px 12px;
-    font-size: 14px;
+    padding: 10px 20px;
+    font-size: 16px;
     text-align: center;
     text-decoration: none;
     color: #fff;
@@ -91,7 +91,16 @@ a.delete {
     transition: background-color 0.3s ease;
 }
 
-/* Estilo para o botão de atualizar (link) */
+/* Estilos para botões padrão e links de ação */
+a.action {
+    background-color: #007bff;
+}
+
+a.action:hover {
+    background-color: #0056b3;
+}
+
+/* Estilos específicos para o botão de edição */
 a.edit {
     background-color: #28a745;
 }
@@ -100,7 +109,7 @@ a.edit:hover {
     background-color: #218838;
 }
 
-/* Estilo para o botão de deletar */
+/* Estilos específicos para o botão de deletar */
 button.delete,
 a.delete {
     background-color: #dc3545;
@@ -109,12 +118,4 @@ a.delete {
 button.delete:hover,
 a.delete:hover {
     background-color: #c82333;
-}
-
-/* Estilo para o contêiner de ações (para espaçamento) */
-.actions-container {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    /* Espaço entre os botões */
 }
