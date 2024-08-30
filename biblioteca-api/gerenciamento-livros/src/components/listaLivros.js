@@ -48,7 +48,7 @@ function ListaLivros() {
       <div className="pesquisa">
         <input
           type="text"
-          placeholder="Pesquisar por título, autor, gênero ou ano" // Placeholder que orienta o usuário sobre os critérios de pesquisa
+          placeholder="Pesquisar livros" // Placeholder que orienta o usuário sobre os critérios de pesquisa
           value={pesquisa} // O valor do input é controlado pelo estado `pesquisa`
           onChange={(e) => setPesquisa(e.target.value)} // Atualiza o estado quando o valor do input muda
         />
