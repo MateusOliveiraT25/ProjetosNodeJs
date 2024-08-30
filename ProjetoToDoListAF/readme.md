@@ -60,87 +60,14 @@ Este projeto é uma aplicação de To-Do List desenvolvida para a Escola SENAI, 
 | **Infraestrutura de Servidores**   | Servidores na nuvem para armazenamento e sincronização dos dados de tarefas.                |
 | **Recursos de Segurança**          | Certificados SSL, criptografia de dados durante a transmissão e armazenamento.              |
 
+## Diagrama de Classes
 
-### Diagrama de Classes
+![Diagrama de Classes](docs/diagrams/diagrama_de_classes.png)
 
-+------------------------+         1      *
-|        Usuario          |<-------------------+
-+------------------------+                     |
-| - id: int               |                     |
-| - nome: String          |                     |
-| - email: String         |                     |
-| - senha: String         |                     |
-+------------------------+                     |
-| + cadastrarTarefa()     |                     |
-| + editarTarefa()        |                     |
-| + removerTarefa()       |                     |
-+------------------------+                     |
-                                              |
-                                              |      *     1
-                                              +------------------------+
-                                              |        Tarefa           |
-                                              +------------------------+
-                                              | - id: int               |
-                                              | - titulo: String        |
-                                              | - descricao: String     |
-                                              | - prioridade: int       |
-                                              | - dataCriacao: Date     |
-                                              | - dataConclusao: Date   |
-                                              | - status: String        |
-                                              +------------------------+
-                                              | + marcarComoConcluida() |
-                                              +------------------------+
+## Diagrama de Casos de Uso
 
-          *    1
-           |  
-+------------------------+
-|       Categoria        |
-+------------------------+
-| - id: int              |
-| - nome: String         |
-+------------------------+
-| + adicionarTarefa()    |
-+------------------------+
+![Diagrama de Casos de Uso](docs/diagrams/diagrama_de_casos_de_uso.png)
 
+## Diagrama de Fluxo
 
-### Diagrama de Casos de Uso
-
-+------------------------------+
-|        Sistema To-Do List     |
-+------------------------------+
-| 1. Login/Logout              |
-| 2. Adicionar Tarefa          |
-| 3. Editar Tarefa             |
-| 4. Marcar como Concluída      |
-| 5. Excluir Tarefa            |
-| 6. Gerenciar Categorias      |
-| 7. Visualizar Tarefas        |
-| 8. Receber Notificações      |
-+------------------------------+
-         ^            ^
-         |            |
-     +------+     +--------+
-     | Usuario|   | Admin  |
-     +--------+   +--------+
-
-
-
-### Diagrama de Fluxo
-
-[Início]
-    |
-[Login do Usuário]
-    |
-[Dashboard de Tarefas]
-    |-------------------------------|
-    |                               |
-[Adicionar Tarefa]        [Visualizar Tarefas]
-    |                               |
-[Definir Título,            [Listar Tarefas]
-Descrição, Data]                  |
-    |                               |
-[Salvar Tarefa]                [Marcar como Concluída]
-    |                               |
-[Retornar ao Dashboard]      [Excluir Tarefa]
-    |
-[Fim]
+![Diagrama de Fluxo](docs/diagrams/diagrama_de_fluxo.png)
