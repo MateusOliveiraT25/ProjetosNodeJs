@@ -12,7 +12,7 @@ function EditarLivro() {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/livros/${id}`)
+      .get(`http://localhost:5000/livros/${id}`)
       .then((response) => {
         setTitulo(response.data.titulo);
         setAutor(response.data.autor);
@@ -25,7 +25,7 @@ function EditarLivro() {
   const atualizarLivro = (e) => {
     e.preventDefault();
     axios
-      .put(`http://localhost:5000/api/livros/${id}`, {
+      .put(`http://localhost:5000/livros/${id}`, {
         titulo,
         autor,
         ano,

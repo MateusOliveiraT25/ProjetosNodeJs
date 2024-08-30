@@ -22,16 +22,33 @@ function ListaLivros() {
   return (
     <div>
       <h1>Lista de Livros</h1>
-      <Link to="/novo">Adicionar Novo Livro</Link>
-      <ul>
-        {livros.map((livro) => (
-          <li key={livro._id}>
-            {livro.titulo} - {livro.autor}
-            <Link to={`/editar/${livro._id}`}>Editar</Link>
-            <button onClick={() => deletarLivro(livro._id)}>Deletar</button>
-          </li>
-        ))}
-      </ul>
+      <Link to="/novo" className="add-new">
+        Adicionar Novo Livro
+      </Link>
+
+      <table>
+        <thead>
+          <tr>
+            <th>Título</th>
+            <th>Autor</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          {livros.map((livro) => (
+            <tr key={livro._id}>
+              <td>{livro.titulo}</td>
+              <td>{livro.autor}</td>
+              <td>
+                <Link to={`/editar/${livro._id}`}>
+                  <button>Editar</button>
+                </Link>
+                <button onClick={() => deletarLivro(livro._id)}>Deletar</button>
+              </td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
     </div>
   );
 }

@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import ListaLivros from "./components/listaLivros";
 import NovoLivro from "./components/novoLivro";
 import EditarLivro from "./components/editarLivro";
+import "./App.css"; // Importa o arquivo CSS
 
 function App() {
   return (
