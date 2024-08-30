@@ -66,7 +66,7 @@ Este projeto é uma aplicação de To-Do List desenvolvida para a Escola SENAI, 
 
 ## Diagrama de Casos de Uso
 
-![Diagrama de Casos de Uso](docs/diagrams/diagrama_de_casos_de_uso.png)
+![Diagrama de Casos de Uso](docs/diagrams/diagrama_de_casos_de_uso1.png)
 
 ## Diagrama de Fluxo
 
