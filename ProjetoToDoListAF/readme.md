@@ -70,4 +70,5 @@ Este projeto é uma aplicação de To-Do List desenvolvida para a Escola SENAI, 
 
 ## Diagrama de Fluxo
 
-![Diagrama de Fluxo](docs/diagrams/diagrama_de_fluxo.png)
+![Diagrama de Fluxo](docs/diagrams/diagrama_de_fluxo.png) 
+1
