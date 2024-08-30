@@ -2,7 +2,7 @@
 
 ## Descrição
 
-Este projeto é uma aplicação de To-Do List desenvolvida para a Escola SENAI, com o objetivo de ajudar os colaboradores a organizar suas tarefas de maneira eficiente e segura. O sistema permite que os usuários criem, editem, visualizem e excluam suas tarefas, além de poderem organizá-las por categorias e definir níveis de prioridade. O sistema também conta com sincronização em nuvem e envio de notificações automáticas.
+Este projeto é uma aplicação de To-Do List desenvolvida para a Escola SENAI, com o objetivo de ajudar os colaboradores a organizar suas tarefas de maneira eficiente e segura. O sistema permite que os usuários criem, editem, visualizem e excluam suas tarefas, além de poderem organizá-las por categorias e definir níveis de prioridade. 
 
 ## Escopo
 
@@ -13,7 +13,6 @@ Este projeto é uma aplicação de To-Do List desenvolvida para a Escola SENAI, 
 - **Datas de Conclusão**: Definir datas de vencimento para as tarefas.
 - **Notificações**: Envio de lembretes automáticos das tarefas antes do vencimento.
 - **Login e Segurança**: Autenticação de usuários para garantir segurança no acesso.
-- **Sincronização em Nuvem**: Salvamento e sincronização das tarefas entre dispositivos.
 
 ### Não Funcionais:
 - **Segurança**: Dados dos usuários criptografados e armazenados de forma segura.
