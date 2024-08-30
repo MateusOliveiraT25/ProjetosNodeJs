@@ -4,7 +4,7 @@
 
 Este projeto é uma aplicação de To-Do List desenvolvida para a Escola SENAI, com o objetivo de ajudar os colaboradores a organizar suas tarefas de maneira eficiente e segura. O sistema permite que os usuários criem, editem, visualizem e excluam suas tarefas, além de poderem organizá-las por categorias e definir níveis de prioridade. O sistema também conta com sincronização em nuvem e envio de notificações automáticas.
 
-## EScopo
+## Escopo
 
 ### Funcionais:
 - **Gerenciamento de Tarefas**: Adicionar, editar, marcar como concluídas e excluir tarefas.
@@ -63,34 +63,33 @@ Este projeto é uma aplicação de To-Do List desenvolvida para a Escola SENAI, 
 
 ### Diagrama de Classes
 
-+------------------------+
-|        Usuario          |
-+------------------------+
-| - id: int               |
-| - nome: String          |
-| - email: String         |
-| - senha: String         |
-+------------------------+
-| + cadastrarTarefa()     |
-| + editarTarefa()        |
-| + removerTarefa()       |
-+------------------------+
-
-          1  *
-           |  
-+------------------------+
-|        Tarefa          |
-+------------------------+
-| - id: int              |
-| - titulo: String       |
-| - descricao: String    |
-| - prioridade: int      |
-| - dataCriacao: Date    |
-| - dataConclusao: Date  |
-| - status: String       |
-+------------------------+
-| + marcarComoConcluida()|
-+------------------------+
++------------------------+         1      *
+|        Usuario          |<-------------------+
++------------------------+                     |
+| - id: int               |                     |
+| - nome: String          |                     |
+| - email: String         |                     |
+| - senha: String         |                     |
++------------------------+                     |
+| + cadastrarTarefa()     |                     |
+| + editarTarefa()        |                     |
+| + removerTarefa()       |                     |
++------------------------+                     |
+                                              |
+                                              |      *     1
+                                              +------------------------+
+                                              |        Tarefa           |
+                                              +------------------------+
+                                              | - id: int               |
+                                              | - titulo: String        |
+                                              | - descricao: String     |
+                                              | - prioridade: int       |
+                                              | - dataCriacao: Date     |
+                                              | - dataConclusao: Date   |
+                                              | - status: String        |
+                                              +------------------------+
+                                              | + marcarComoConcluida() |
+                                              +------------------------+
 
           *    1
            |  
@@ -103,12 +102,12 @@ Este projeto é uma aplicação de To-Do List desenvolvida para a Escola SENAI, 
 | + adicionarTarefa()    |
 +------------------------+
 
+
 ### Diagrama de Casos de Uso
 
 +------------------------------+
 |        Sistema To-Do List     |
 +------------------------------+
-|                              |
 | 1. Login/Logout              |
 | 2. Adicionar Tarefa          |
 | 3. Editar Tarefa             |
@@ -121,8 +120,9 @@ Este projeto é uma aplicação de To-Do List desenvolvida para a Escola SENAI, 
          ^            ^
          |            |
      +------+     +--------+
-     | Usuario|   |Admin   |
+     | Usuario|   | Admin  |
      +--------+   +--------+
+
 
 
 ### Diagrama de Fluxo
