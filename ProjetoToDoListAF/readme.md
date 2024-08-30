@@ -54,10 +54,11 @@ Este projeto é uma aplicação de To-Do List desenvolvida para a Escola SENAI, 
 
 | Categoria                         | Descrição                                                                                   |
 | ---------------------------------- | ------------------------------------------------------------------------------------------- |
-| **Equipe de Desenvolvimento**      | 3 desenvolvedores full-stack.                                                               |
-| **Ferramentas de Desenvolvimento** | IDEs como VS Code, repositório de código com GitHub, frameworks de frontend (React) e backend (Node.js), banco de dados (MongoDB), e    autenticação (JWT). |
+| **Recursos Humanos**               | 3 desenvolvedores full-stack.                                                               |
+| **Recursos Tecnológicos**          | IDEs como VS Code, repositório de código com GitHub, frameworks de frontend (React) e backend (Node.js), banco de dados (MongoDB), e autenticação (JWT). |
 | **Infraestrutura de Servidores**   | Servidores na nuvem para armazenamento e sincronização dos dados de tarefas.                |
 | **Recursos de Segurança**          | Certificados SSL, criptografia de dados durante a transmissão e armazenamento.              |
+| **Recursos Financeiros**           | Orçamento destinado ao desenvolvimento, manutenção e suporte da aplicação.                  |
 
 
 ## Diagrama de Classes
