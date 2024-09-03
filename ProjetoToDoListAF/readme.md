@@ -79,5 +79,5 @@ Este projeto é uma aplicação de To-Do List desenvolvida para a Escola SENAI, 
 
 ![Diagrama de Casos de Uso](docs/diagrams/Tela_login.png)
 
-![Diagrama de Fluxo](docs/diagrams/Tela_dashboard.png) 
+![Diagrama de Fluxo](docs/diagrams/Tela_dashboard1.png) 
 
