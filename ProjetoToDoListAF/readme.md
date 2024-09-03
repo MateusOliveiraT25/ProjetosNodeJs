@@ -76,11 +76,11 @@ Este projeto é uma aplicação de To-Do List desenvolvida para a Escola SENAI, 
 ## Prototipagem
 
 **Tela registro**   
-![Tela Registro](docs/diagrams/Tela_registro.png)
+![Tela Registro](docs/prototyping/Tela_registro.png)
 
 **Tela login**   
-![Tela login](docs/diagrams/Tela_login.png)
+![Tela login](docs/prototyping/Tela_login.png)
 
 **Tela dashboard**  
-![Tela dashboard](docs/diagrams/Tela_dashboard1.png) 
+![Tela dashboard](docs/prototyping/Tela_dashboard1.png) 
 
