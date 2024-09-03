@@ -24,6 +24,12 @@ export default function Home() {
 
   // Função assíncrona para adicionar uma nova tarefa
   const addTodo = async () => {
+    if (newTodo.trim() === "") {
+      // Não faz nada se o título estiver vazio
+      alert("O título da tarefa não pode estar vazio.");
+      return;
+    }
+
     const response = await fetch("/api/todos", {
       method: "POST", // Define o método HTTP como POST
       headers: {
@@ -67,19 +73,32 @@ export default function Home() {
   };
 
   // Função assíncrona para atualizar o título da tarefa
-  const updateTodo = async (id) => {
-    await fetch(`/api/todos/${id}`, {
-      method: "PUT", // Define o método HTTP como PUT para atualizar a tarefa
-      headers: {
-        "Content-Type": "application/json", // Define o tipo de conteúdo como JSON
-      },
-      body: JSON.stringify({ title: editingTitle }), // Envia o novo título da tarefa
-    });
-    setTodos(
-      todos.map((todo) =>
-        todo._id === id ? { ...todo, title: editingTitle } : todo
-      )
-    );
+const updateTodo = async (id) => {
+  if (editingTitle.trim() === "") {
+    // Não faz nada se o título estiver vazio
+    alert("O título da tarefa não pode estar vazio.");
+    return;
+  }
+
+  await fetch(`/api/todos/${id}`, {
+    method: "PUT", // Define o método HTTP como PUT para atualizar a tarefa
+    headers: {
+      "Content-Type": "application/json", // Define o tipo de conteúdo como JSON
+    },
+    body: JSON.stringify({ title: editingTitle }), // Envia o novo título da tarefa
+  });
+  setTodos(
+    todos.map((todo) =>
+      todo._id === id ? { ...todo, title: editingTitle } : todo
+    )
+  );
+  setEditingTodoId(null); // Reseta o estado de edição
+  setEditingTitle(""); // Limpa o campo de título em edição
+};
+
+
+  // Função para cancelar a edição e voltar ao estado normal
+  const cancelEditTodo = () => {
     setEditingTodoId(null); // Reseta o estado de edição
     setEditingTitle(""); // Limpa o campo de título em edição
   };
@@ -87,56 +106,69 @@ export default function Home() {
   return (
     <div>
       <h1>To-Do List</h1>
-      {/* Campo de entrada para adicionar uma nova tarefa */}
-      <input
-        type="text"
-        value={newTodo} // Vincula o valor ao estado newTodo
-        onChange={(e) => setNewTodo(e.target.value)} // Atualiza o estado conforme o usuário digita
-      />
-      {/* Botão para adicionar a nova tarefa */}
-      <button onClick={addTodo}>Adicionar Tarefa</button>
+      {/* Campo de entrada e botão de adicionar tarefa só são exibidos se não estiver editando uma tarefa */}
+      {editingTodoId === null && (
+        <>
+          <input
+            type="text"
+            value={newTodo} // Vincula o valor ao estado newTodo
+            onChange={(e) => setNewTodo(e.target.value)} // Atualiza o estado conforme o usuário digita
+          />
+          <button onClick={addTodo}>Adicionar Tarefa</button>
+        </>
+      )}
       <ul>
-        {/* Mapeia a lista de tarefas (todos) para exibir cada tarefa */}
-        {todos.map((todo) => (
-          <li key={todo._id}>
-            {/* Exibe o campo de edição se a tarefa estiver em modo de edição */}
-            {editingTodoId === todo._id ? (
-              <>
-                {/* Campo de entrada para editar o título da tarefa */}
-                <input
-                  type="text"
-                  value={editingTitle} // Vincula o valor ao estado editingTitle
-                  onChange={(e) => setEditingTitle(e.target.value)} // Atualiza o título da tarefa em edição
-                />
-                {/* Botão para confirmar a atualização da tarefa */}
-                <button onClick={() => updateTodo(todo._id)}>Atualizar</button>
-              </>
-            ) : (
-              <>
-                {/* Exibe o título da tarefa e o status de conclusão */}
-                <input
-                  type="checkbox"
-                  checked={todo.completed} // Marca o checkbox se a tarefa estiver concluída
-                  onChange={() =>
-                    toggleTodoCompletion(todo._id, todo.completed)
-                  } // Alterna o status de conclusão da tarefa
-                />
-                <span>{todo.title}</span>
-                {todo.completed && (
-                  <span style={{ color: "green", marginLeft: "10px" }}>
-                    [Concluído]
-                  </span>
-                )}
-                {/* Botão para iniciar a edição da tarefa */}
-                <button onClick={() => startEditingTodo(todo._id, todo.title)}>
-                  Editar
-                </button>
-                {/* Botão para excluir a tarefa */}
-                <button onClick={() => deleteTodo(todo._id)}>Excluir</button>
-              </>
-            )}
-          </li>
-        ))}
+        {/* Filtra a lista de tarefas para exibir somente a tarefa em edição, se houver uma */}
+        {todos
+          .filter(
+            (todo) => editingTodoId === null || todo._id === editingTodoId
+          )
+          .map((todo) => (
+            <li key={todo._id}>
+              {/* Exibe o campo de edição se a tarefa estiver em modo de edição */}
+              {editingTodoId === todo._id ? (
+                <>
+                  {/* Campo de entrada para editar o título da tarefa */}
+                  <input
+                    type="text"
+                    value={editingTitle} // Vincula o valor ao estado editingTitle
+                    onChange={(e) => setEditingTitle(e.target.value)} // Atualiza o título da tarefa em edição
+                  />
+                  {/* Botão para confirmar a atualização da tarefa */}
+                  <button onClick={() => updateTodo(todo._id)}>
+                    Atualizar
+                  </button>
+                  {/* Botão para cancelar a edição */}
+                  <button onClick={cancelEditTodo}>Cancelar</button>
+                </>
+              ) : (
+                <>
+                  {/* Exibe o título da tarefa e o status de conclusão */}
+                  <input
+                    type="checkbox"
+                    checked={todo.completed} // Marca o checkbox se a tarefa estiver concluída
+                    onChange={() =>
+                      toggleTodoCompletion(todo._id, todo.completed)
+                    } // Alterna o status de conclusão da tarefa
+                  />
+                  <span>{todo.title}</span>
+                  {todo.completed && (
+                    <span style={{ color: "green", marginLeft: "10px" }}>
+                      [Concluído]
+                    </span>
+                  )}
+                  {/* Botão para iniciar a edição da tarefa */}
+                  <button
+                    onClick={() => startEditingTodo(todo._id, todo.title)}
+                  >
+                    Editar
+                  </button>
+                  {/* Botão para excluir a tarefa */}
+                  <button onClick={() => deleteTodo(todo._id)}>Excluir</button>
+                </>
+              )}
+            </li>
+          ))}
       </ul>
     </div>
   );
