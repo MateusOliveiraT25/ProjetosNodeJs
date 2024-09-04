@@ -1,0 +1,123 @@
+/* Estiliza o contêiner principal */
+div {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    box-sizing: border-box;
+    /* Inclui padding e border no cálculo da largura */
+}
+
+/* Estiliza o título */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Estiliza o campo de entrada e o botão de adicionar tarefa */
+input[type="text"] {
+    padding: 12px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-right: 10px;
+    width: calc(100% - 140px);
+    /* Ajusta a largura considerando o botão */
+    box-sizing: border-box;
+}
+
+button {
+    padding: 12px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    background-color: #28a745;
+    color: white;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+button:active {
+    transform: scale(0.95);
+}
+
+/* Estiliza a tabela */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+thead {
+    background-color: #f4f4f4;
+}
+
+th,
+td {
+    padding: 12px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #e9ecef;
+    color: #333;
+}
+
+/* Alinha o conteúdo da célula */
+td,
+th {
+    vertical-align: middle;
+    text-align: center;
+    /* Alinha o texto ao centro para todas as células */
+}
+
+/* Ajusta o conteúdo da coluna de status */
+td.status {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+td.status input[type="checkbox"] {
+    margin-right: 10px;
+    /* Espaçamento entre o checkbox e o texto */
+}
+
+td.status span.status {
+    font-size: 16px;
+    font-weight: bold;
+    min-width: 80px;
+    /* Define uma largura mínima para alinhar o texto */
+    display: inline-block;
+    text-align: center;
+}
+
+/* Estiliza o status das tarefas */
+span[style*="color: green"] {
+    color: #28a745;
+}
+
+span[style*="color: red"] {
+    color: #dc3545;
+}
+
+/* Estiliza os botões de editar e excluir dentro da tabela */
+button:last-child {
+    background-color: #dc3545;
+    margin-left: 10px;
+}
+
+button:last-child:hover {
+    background-color: #c82333;
+}

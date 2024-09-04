@@ -4,7 +4,7 @@ import connectMongo from "@/utils/dbConnect";
 //criar crud
 //Read 
 export  const  getTodos = async()=> {
-    connectMongo;
+     await connectMongo;
     try{
         return await Todo.find();
     } catch (error){
