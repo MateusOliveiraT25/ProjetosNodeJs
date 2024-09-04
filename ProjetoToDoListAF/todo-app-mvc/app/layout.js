@@ -1,6 +1,5 @@
 import { Inter } from "next/font/google";
 import "./globals.css";
-import './todoItem.css'; // Certifique-se de ajustar o caminho conforme a estrutura do seu projeto
 
 const inter = Inter({ subsets: ["latin"] });
 

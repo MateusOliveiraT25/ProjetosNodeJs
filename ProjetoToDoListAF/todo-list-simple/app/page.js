@@ -103,73 +103,95 @@ const updateTodo = async (id) => {
     setEditingTitle(""); // Limpa o campo de título em edição
   };
 
-  return (
-    <div>
-      <h1>To-Do List</h1>
-      {/* Campo de entrada e botão de adicionar tarefa só são exibidos se não estiver editando uma tarefa */}
-      {editingTodoId === null && (
-        <>
-          <input
-            type="text"
-            value={newTodo} // Vincula o valor ao estado newTodo
-            onChange={(e) => setNewTodo(e.target.value)} // Atualiza o estado conforme o usuário digita
-          />
-          <button onClick={addTodo}>Adicionar Tarefa</button>
-        </>
-      )}
-      <ul>
+return (
+  <div>
+    <h1>To-Do List</h1>
+    {/* Campo de entrada e botão de adicionar tarefa só são exibidos se não estiver editando uma tarefa */}
+    {editingTodoId === null && (
+      <>
+        <input
+          type="text"
+          value={newTodo} // Vincula o valor ao estado newTodo
+          onChange={(e) => setNewTodo(e.target.value)} // Atualiza o estado conforme o usuário digita
+        />
+        <button onClick={addTodo}>Adicionar Tarefa</button>
+      </>
+    )}
+    <table>
+      <thead>
+        <tr>
+          <th>Status</th>
+          <th>Título</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
         {/* Filtra a lista de tarefas para exibir somente a tarefa em edição, se houver uma */}
         {todos
           .filter(
             (todo) => editingTodoId === null || todo._id === editingTodoId
           )
           .map((todo) => (
-            <li key={todo._id}>
-              {/* Exibe o campo de edição se a tarefa estiver em modo de edição */}
-              {editingTodoId === todo._id ? (
-                <>
-                  {/* Campo de entrada para editar o título da tarefa */}
-                  <input
-                    type="text"
-                    value={editingTitle} // Vincula o valor ao estado editingTitle
-                    onChange={(e) => setEditingTitle(e.target.value)} // Atualiza o título da tarefa em edição
-                  />
-                  {/* Botão para confirmar a atualização da tarefa */}
-                  <button onClick={() => updateTodo(todo._id)}>
-                    Atualizar
-                  </button>
-                  {/* Botão para cancelar a edição */}
-                  <button onClick={cancelEditTodo}>Cancelar</button>
-                </>
-              ) : (
-                <>
-                  {/* Exibe o título da tarefa e o status de conclusão */}
-                  <input
-                    type="checkbox"
-                    checked={todo.completed} // Marca o checkbox se a tarefa estiver concluída
-                    onChange={() =>
-                      toggleTodoCompletion(todo._id, todo.completed)
-                    } // Alterna o status de conclusão da tarefa
-                  />
-                  <span>{todo.title}</span>
-                  {todo.completed && (
-                    <span style={{ color: "green", marginLeft: "10px" }}>
-                      [Concluído]
-                    </span>
-                  )}
-                  {/* Botão para iniciar a edição da tarefa */}
-                  <button
-                    onClick={() => startEditingTodo(todo._id, todo.title)}
-                  >
-                    Editar
-                  </button>
-                  {/* Botão para excluir a tarefa */}
-                  <button onClick={() => deleteTodo(todo._id)}>Excluir</button>
-                </>
-              )}
-            </li>
+            <tr key={todo._id}>
+              <td className="status">
+                {/* Exibe o checkbox para alterar o status de conclusão */}
+                <input
+                  type="checkbox"
+                  checked={todo.completed} // Marca o checkbox se a tarefa estiver concluída
+                  onChange={() =>
+                    toggleTodoCompletion(todo._id, todo.completed)
+                  } // Alterna o status de conclusão da tarefa
+                />
+                {/* Exibe o status da tarefa */}
+                {todo.completed ? (
+                  <span className="status" style={{ color: "green" }}>
+                    Concluído
+                  </span>
+                ) : (
+                  <span className="status" style={{ color: "red" }}>
+                    Pendente
+                  </span>
+                )}
+              </td>
+              <td>
+                {/* Exibe o título da tarefa e o status de conclusão */}
+                {editingTodoId === todo._id ? (
+                  <>
+                    {/* Campo de entrada para editar o título da tarefa */}
+                    <input
+                      type="text"
+                      value={editingTitle} // Vincula o valor ao estado editingTitle
+                      onChange={(e) => setEditingTitle(e.target.value)} // Atualiza o título da tarefa em edição
+                    />
+                  </>
+                ) : (
+                  <>
+                    <span>{todo.title}</span>
+                  </>
+                )}
+              </td>
+              <td>
+                {/* Botões de ação para edição e exclusão */}
+                {editingTodoId === todo._id ? (
+                  <>
+                    {/* Botão para confirmar a atualização da tarefa */}
+                    <button onClick={() => updateTodo(todo._id)}>Atualizar</button>
+                    {/* Botão para cancelar a edição */}
+                    <button onClick={cancelEditTodo}>Cancelar</button>
+                  </>
+                ) : (
+                  <>
+                    {/* Botão para iniciar a edição da tarefa */}
+                    <button onClick={() => startEditingTodo(todo._id, todo.title)}>Editar</button>
+                    {/* Botão para excluir a tarefa */}
+                    <button onClick={() => deleteTodo(todo._id)}>Excluir</button>
+                  </>
+                )}
+              </td>
+            </tr>
           ))}
-      </ul>
-    </div>
-  );
+      </tbody>
+    </table>
+  </div>
+);
 }
