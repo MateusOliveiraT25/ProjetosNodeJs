@@ -9,7 +9,6 @@ export async function POST(request) {
 
   await connectMongo();
 
-  try {
     // Hasheia a senha de forma assíncrona
     const passwordHash = await bcrypt.hash(password, 10);
 
@@ -19,6 +18,7 @@ export async function POST(request) {
       password: passwordHash,
     });
 
+  try {
     // Salva o usuário no banco de dados
     await user.save();
 
