@@ -1,20 +1,21 @@
 import { getTasks, createTask } from "@/controllers/TaskController";
 import { NextResponse } from "next/server";
 
-// GET: obter todas as tarefas
+// Função para obter todas as tarefas
 export async function GET() {
   try {
-    const tasks = await getTask(); // Corrigido para 'getTasks'
+    // Chama a função para obter todas as tarefas do banco de dados
+    const tasks = await getTasks(); 
     return NextResponse.json({ success: true, data: tasks });
   } catch (error) {
+    // Loga o erro se ocorrer algum problema ao obter as tarefas
     console.error("Erro ao obter tarefas:", error);
     return NextResponse.json(
       { success: false, message: "Erro ao obter tarefas" },
-      { status: 400 }
+      { status: 400 } // Retorna status 400 em caso de erro
     );
   }
 }
-
 // POST: criar uma nova tarefa
 export async function POST(request) {
   try {
