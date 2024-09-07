@@ -4,7 +4,7 @@ import { NextResponse } from "next/server";
 // GET: obter todas as tarefas
 export async function GET() {
   try {
-    const tasks = await getTasks(); // Corrigido para 'getTasks'
+    const tasks = await getTask(); // Corrigido para 'getTasks'
     return NextResponse.json({ success: true, data: tasks });
   } catch (error) {
     console.error("Erro ao obter tarefas:", error);

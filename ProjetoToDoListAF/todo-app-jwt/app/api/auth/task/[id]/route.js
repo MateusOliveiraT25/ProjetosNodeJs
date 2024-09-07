@@ -1,27 +1,50 @@
 import { updateTask, deleteTask } from "@/controllers/TaskController";
 import { NextResponse } from "next/server";
 
-export async function PUT(req, { params }) {
+// Atualizar uma tarefa
+export async function PUT(request, { params }) {
   try {
-    const data = await req.json();
+    const data = await request.json();
     const task = await updateTask(params.id, data);
+
     if (!task) {
-      return NextResponse.json({ success: false }, { status: 400 });
+      return NextResponse.json(
+        { success: false, message: "Task not found" },
+        { status: 404 }
+      );
     }
+
     return NextResponse.json({ success: true, data: task });
   } catch (error) {
-    return NextResponse.json({ success: false }, { status: 400 });
+    console.error("Erro ao atualizar tarefa:", error);
+    return NextResponse.json(
+      { success: false, message: "Erro ao atualizar tarefa" },
+      { status: 400 }
+    );
   }
 }
 
-export async function DELETE(req, { params }) {
+// Deletar uma tarefa
+export async function DELETE(request, { params }) {
   try {
     const deletedTask = await deleteTask(params.id);
-    if (!deletedTask) {
-      return NextResponse.json({ success: false }, { status: 400 });
+
+    if (!deletedTask.deletedCount) {
+      return NextResponse.json(
+        { success: false, message: "Tarefa não encontrada" },
+        { status: 404 }
+      );
     }
-    return NextResponse.json({ success: true, data: {} });
+
+    return NextResponse.json({
+      success: true,
+      message: "Tarefa deletada com successo",
+    });
   } catch (error) {
-    return NextResponse.json({ success: false }, { status: 400 });
+    console.error("Erro ao deletar tarefa:", error);
+    return NextResponse.json(
+      { success: false, message: "Erro ao deletar tarefa" },
+      { status: 400 }
+    );
   }
 }
