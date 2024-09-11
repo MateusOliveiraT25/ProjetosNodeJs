@@ -66,4 +66,4 @@ Um blog onde os usuários podem criar, editar e excluir posts, com suporte a com
 
 ## Diagrama de Fluxo
 
-![Diagrama de Fluxo](docs/diagrams/diagrama_de_fluxo.png) 
+![Diagrama de Fluxo](docs/diagrams/diagrama_de_fluxo1.png) 
