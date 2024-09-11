@@ -54,3 +54,16 @@ Um blog onde os usuários podem criar, editar e excluir posts, com suporte a com
    - **Back-End:** Node.js
    - **Banco de Dados:** MongoDB
    - **Hospedagem:** AWS ou DigitalOcean
+
+
+## Diagrama de Classes
+
+![Diagrama de Classes](docs/diagrams/diagrama_de_classes.png)
+
+## Diagrama de Casos de Uso
+
+![Diagrama de Casos de Uso](docs/diagrams/diagrama_de_casos_de_uso.png)
+
+## Diagrama de Fluxo
+
+![Diagrama de Fluxo](docs/diagrams/diagrama_de_fluxo.png) 
