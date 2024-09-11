@@ -1,4 +1,4 @@
-# Projeto: Blog Pessoal
+# Projeto: DM Blog Pessoal
 
 ## Descrição do Projeto
 Um blog onde os usuários podem criar, editar e excluir posts, com suporte a comentários, tags e categorias. Também incluirá funcionalidades de busca por posts e perfis de autores.
