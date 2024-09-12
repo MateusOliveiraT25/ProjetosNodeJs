@@ -3,20 +3,23 @@
 ## Descrição do Projeto
 Um blog onde os usuários podem criar, editar e excluir posts, com suporte a comentários, tags e categorias. Também incluirá funcionalidades de busca por posts e perfis de autores.
 
-Escopo 
+## Escopo 
 
-Funcionais:
-Sistema de Postagens: Usuários podem criar, editar e excluir posts com um editor de texto enriquecido.
-Sistema de Comentários: Usuários podem comentar em posts e excluir seus próprios comentários.
-Classificação com Tags e Categorias: Os posts podem ser classificados por tags e categorias para facilitar a navegação.
-Busca de Posts: Ferramenta de busca para encontrar posts específicos.
-Perfil de Autor: Exibir informações sobre os autores de posts, incluindo histórico de postagens.
-Não Funcionais:
-Desempenho: O sistema deve suportar 1.000 visitas diárias e até 100 posts sem perda significativa de desempenho.
-Segurança: Implementar autenticação e controle de acesso para que apenas usuários autorizados possam editar ou excluir posts.
-Escalabilidade: A arquitetura deve permitir expansão do número de posts e usuários sem necessidade de grandes modificações.
-Usabilidade: A interface deve ser intuitiva, facilitando a navegação e uso do sistema por usuários não técnicos.
-Confiabilidade: O sistema deve ter um uptime de 99% e ser resistente a falhas de servidor.
+### Funcionais:
+
+- **Sistema de Postagens:** Usuários podem criar, editar e excluir posts com um editor de texto enriquecido.
+- **Sistema de Comentários:** Usuários podem comentar em posts e excluir seus próprios comentários.
+- **Classificação com Tags e Categorias:** Os posts podem ser classificados por tags e categorias para facilitar a navegação.
+- **Busca de Posts:** Ferramenta de busca para encontrar posts específicos.
+- **Perfil de Autor:** Exibir informações sobre os autores de posts, incluindo histórico de postagens.
+
+- **Não Funcionais:**
+
+- **Desempenho:** O sistema deve suportar 1.000 visitas diárias e até 100 posts sem perda significativa de desempenho.
+- **Segurança:** Implementar autenticação e controle de acesso para que apenas usuários autorizados possam editar ou excluir posts.
+- **Escalabilidade:** A arquitetura deve permitir expansão do número de posts e usuários sem necessidade de grandes modificações.
+- **Usabilidade:** A interface deve ser intuitiva, facilitando a navegação e uso do sistema por usuários não técnicos.
+- **onfiabilidade:** O sistema deve ter um uptime de 99% e ser resistente a falhas de servidor.
 
 ### Funcionalidades:
 - **Editor de texto enriquecido:** Permitir que os usuários criem conteúdo formatado.
