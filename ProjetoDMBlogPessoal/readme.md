@@ -56,10 +56,10 @@ Confiabilidade: O sistema deve ter um uptime de 99% e ser resistente a falhas de
    - Problemas de performance no sistema de busca.
      Soluções: Revisar e otimizar as consultas ao banco de dados para melhorar o desempenho e corrigir bugs.
      
-   -Vulnerabilidades de Segurança
+   -Vulnerabilidades de Segurança.
      Soluções: Avaliações de Segurança, Atualizações e Patches e Práticas de Segurança.
    
-   -Perda de Dados
+   -Perda de Dados.
      Soluções: Backups Regulares, Plano de Recuperação de Desastres e Controle de Versão.
 
 3. **Riscos de Prazo:**
