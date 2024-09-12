@@ -57,10 +57,10 @@ Confiabilidade: O sistema deve ter um uptime de 99% e ser resistente a falhas de
      Soluções: Revisar e otimizar as consultas ao banco de dados para melhorar o desempenho e corrigir bugs.
      
    -Vulnerabilidades de Segurança
-     Soluções: Avaliações de Segurança, Atualizações e Patches e Práticas de Segurança
+     Soluções: Avaliações de Segurança, Atualizações e Patches e Práticas de Segurança.
    
    -Perda de Dados
-     Soluções: Backups Regulares, Plano de Recuperação de Desastres e Controle de Versão
+     Soluções: Backups Regulares, Plano de Recuperação de Desastres e Controle de Versão.
 
 3. **Riscos de Prazo:**
    - Atraso na implementação de funcionalidades críticas como o editor de texto enriquecido.
@@ -73,7 +73,7 @@ Confiabilidade: O sistema deve ter um uptime de 99% e ser resistente a falhas de
       Soluções: Testes Rigorosos, Revisões de Código e Controle de Qualidade.
       
    - Falta de Comunicação Eficiente
-     Soluções: Canal de Comunicação, Reuniões Regulares e Documentação e Relatórios
+     Soluções: Canal de Comunicação, Reuniões Regulares e Documentação e Relatórios.
      
 
 ## Recursos
