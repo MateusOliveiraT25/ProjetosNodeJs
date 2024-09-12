@@ -107,11 +107,11 @@ Confiabilidade: O sistema deve ter um uptime de 99% e ser resistente a falhas de
 
 ## Prototipagem
 
-**Tela registro**   
+**Tela dashboard baixa**   
 ![Tela Dashboard baixa](docs/prototyping/baixa.png)
 
-**Tela login**   
+**Tela dashboard media**   
 ![Tela Dashboard media](docs/prototyping/media.png)
 
-**Tela dashboard**  
+**Tela dashboard alta**  
 ![Tela dashboard alta](docs/prototyping/alta.png) 
