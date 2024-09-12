@@ -50,21 +50,42 @@ Confiabilidade: O sistema deve ter um uptime de 99% e ser resistente a falhas de
 
 1. **Riscos Técnicos:**
    - Falta de integração correta entre front-end e back-end.
+     Soluções: Documentação Clara, Testes de Integração, Ambiente de Desenvolvimento Conjunto e Reuniões Regulares ente a equipe de back e front.
    - Problemas de performance no sistema de busca.
+     Soluções: Revisar e otimizar as consultas ao banco de dados para melhorar o desempenho e corrigir bugs.
+   -Vulnerabilidades de Segurança
+     Soluções: Avaliações de Segurança, Atualizações e Patches e Práticas de Segurança
+   -Perda de Dados
+     Soluções: Backups Regulares, Plano de Recuperação de Desastres e Controle de Versão
 
 2. **Riscos de Prazo:**
    - Atraso na implementação de funcionalidades críticas como o editor de texto enriquecido.
+      Soluções: Planejamento Adequado, Desenvolvimento Incremental, Dividir a implementação da funcionalidade em etapas menores e entregáveis e Comunicar regularmente com as partes interessadas sobre o progresso e                quaisquer mudanças nos prazos.
    - Dependência de terceiros para bibliotecas externas.
+      Soluções:  Avaliar a estabilidade e a confiabilidade das bibliotecas externas e usar depedencias e bibliotecas confiaveis.
+    - Falta de Qualidade
+      Soluções: Testes Rigorosos, Revisões de Código e Controle de Qualidade.
+   - Falta de Comunicação Eficiente
+     Soluções: Canal de Comunicação, Reuniões Regulares e Documentação e Relatórios
+     
 
 ## Recursos
 
 1. **Equipe:**
-   - 1 Desenvolvedor Front-End.
-   - 1 Desenvolvedor Back-End.
-   - 1 Designer.
+   - 2 Desenvolvedor Front-End.
+   - 2 Desenvolvedor Back-End.
+   - 1 Designer UI/UX
+   - 1 Especialista em Segurança e proteção de dados
    - 1 Gerente de Projeto.
+   - 1 Administrador de Sistemas
+   - 1 Analista de Negócios
+   - 1 Especialista em Integração
+   - 2 Suporte Técnico
 
 2. **Tecnologias:**
+   - **Gerenciamento de tarefas:** Trello
+   - **Comunicação interna:** Teams
+   - **design de interfaces:** Canva
    - **Front-End:** React
    - **Back-End:** Node.js
    - **Banco de Dados:** MongoDB
