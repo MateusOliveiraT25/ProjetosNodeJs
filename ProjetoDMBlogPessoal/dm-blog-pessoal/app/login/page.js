@@ -1,41 +1,41 @@
-'use client';
+"use client";
 
-
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
-
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
   const [error, setError] = useState(null);
   const router = useRouter();
 
-
   const handleLogin = async () => {
-    const response = await fetch('/api/auth/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, password }),
-    });
+    try {
+      const response = await fetch("/api/auth/login", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ username, password }),
+      });
 
-
-    if (response.ok) {
-      const { token } = await response.json();
-      localStorage.setItem('token', token);
-      router.push('/posts');
-    } else {
-      setError('Credenciais inválidas');
+      if (response.ok) {
+        const { token } = await response.json();
+        localStorage.setItem("token", token);
+        router.push("/post");
+      } else {
+        setError("Credenciais inválidas");
+      }
+    } catch (error) {
+      console.error("Erro na requisição:", error);
+      setError("Erro ao fazer login");
     }
   };
-
 
   return (
     <div>
       <h1>Login</h1>
-      {error && <p style={{ color: 'red' }}>{error}</p>}
+      {error && <p style={{ color: "red" }}>{error}</p>}
       <input
         type="text"
         placeholder="Username"
@@ -55,6 +55,3 @@ export default function LoginPage() {
     </div>
   );
 }
-
-
-

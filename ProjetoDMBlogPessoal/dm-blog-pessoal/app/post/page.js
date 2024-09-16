@@ -1,88 +1,85 @@
-'use client';
+"use client";
 
-
-import { useEffect, useState } from 'react';
-import { useRouter } from 'next/navigation';
-import { JsonWebTokenError } from 'jsonwebtoken';
-
+import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 
 export default function PostPage() {
   const [posts, setPosts] = useState([]);
-  const [newPost, setNewPost] = useState('');
+  const [newPost, setNewPost] = useState("");
   const router = useRouter();
-
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const token = localStorage.getItem('token');
+      const token = localStorage.getItem("token");
       if (!token) {
-        router.push('/login'); // Redireciona para login se o usuário não estiver autenticado
+        router.push("/login"); // Redireciona para login se o usuário não estiver autenticado
         return;
       }
 
-      
-      const response = await fetch('/api/posts', {
+      const response = await fetch("/api/post", {
         headers: {
           Authorization: `Bearer ${token}`, // Envia o token no header da requisição
         },
       });
 
-
       if (response.ok) {
         const data = await response.json();
-        setPosts(data.posts);
+        setPosts(data.data || []); // Ajustado para usar o campo `data` da resposta
       } else {
-        router.push('/login'); // Redireciona para login se houver erro
+        router.push("/login"); // Redireciona para login se houver erro
       }
     };
-
 
     fetchPosts();
   }, [router]);
 
-
   const addPost = async () => {
-    const token = localStorage.getItem('token');
-    const response = await fetch('/api/posts', {
-      method: 'POST',
+    const token = localStorage.getItem("token");
+    const response = await fetch("/api/post", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json',
+        "Content-Type": "application/json",
         Authorization: `Bearer ${token}`,
       },
-      body: JSON.stringify({ title: newTask }),
+      body: JSON.stringify({ title: newPost }),
     });
-
 
     const data = await response.json();
-    setPosts([...posts, data.post]);
-    setNewPost('');
+    if (data.success) {
+      setPosts([...posts, data.data]); // Ajustado para usar `data.data`
+      setNewPost("");
+    } else {
+      console.error("Erro ao adicionar post");
+    }
   };
 
-
   const deletePost = async (id) => {
-    const token = localStorage.getItem('token');
-    await fetch(`/api/posts?id=${id}`, {
-      method: 'DELETE',
+    const token = localStorage.getItem("token");
+    const response = await fetch(`/api/post?id=${id}`, {
+      method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
       },
     });
 
-
-    setPosts(posts.filter((post) => post._id !== id));
+    const data = await response.json();
+    if (data.success) {
+      setPosts(posts.filter((post) => post._id !== id));
+    } else {
+      console.error("Erro ao deletar post");
+    }
   };
-
 
   return (
     <div>
-      <h1>To-Do List</h1>
+      <h1>Posts</h1>
       <input
         type="text"
-        value={newTask}
-        onChange={(e) => setNewpost(e.target.value)}
-        placeholder="Nova tarefa"
+        value={newPost}
+        onChange={(e) => setNewPost(e.target.value)}
+        placeholder="Novo post"
       />
-      <button onClick={addpost}>Adicionar Tarefa</button>
+      <button onClick={addPost}>Adicionar Post</button>
       <ul>
         {posts.map((post) => (
           <li key={post._id}>

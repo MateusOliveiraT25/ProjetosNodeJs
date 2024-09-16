@@ -1,26 +1,33 @@
-import Usuario from "@//models/Usuario.js";
+import Usuario from "@/models/Usuario.js";
 import connectMongo from "@/utils/dbConnect";
 import { NextResponse } from "next/server";
-
 import jwt from "jsonwebtoken";
 
 export async function POST(request) {
-  const { usuarioname, password } = await request.json();
+  const { username, password } = await request.json();
   await connectMongo();
 
-  //verificar se o usuario existe
   try {
-    const usuario = await Usuario.findOne({ username });
-    if (!usuario && !(await usuario.comparePassword(password))) {
-      return NextResponse.json({ sucess: false }, { status: 400 });
+    // Verificar se o usuário existe
+    const usuario = await Usuario.findOne({ email: username }); // Ajuste o campo de busca conforme necessário
+    if (!usuario || !(await usuario.comparePassword(password))) {
+      return NextResponse.json(
+        { success: false, message: "Credenciais inválidas" },
+        { status: 400 }
+      );
     }
 
-    //Criar Minha Token de Autorização
+    // Criar o token de autorização
     const token = jwt.sign({ usuarioId: usuario._id }, process.env.JWT_SECRET, {
       expiresIn: "1h",
     });
-    return NextResponse.json({ token });
+
+    return NextResponse.json({ success: true, token });
   } catch (error) {
-    return NextResponse.json({ succes: false }, { status: 400 });
+    console.error("Erro no login:", error);
+    return NextResponse.json(
+      { success: false, message: "Erro interno do servidor" },
+      { status: 500 }
+    );
   }
 }
