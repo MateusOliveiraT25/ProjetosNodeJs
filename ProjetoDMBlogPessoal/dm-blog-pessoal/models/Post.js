@@ -1,5 +1,4 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+import mongoose from "mongoose";
 
 const PostSchema = new Schema({
   titulo: { type: String, required: true },
@@ -10,17 +9,5 @@ const PostSchema = new Schema({
   comentarios: [{ type: Schema.Types.ObjectId, ref: 'Comentario' }]
 }, { timestamps: true });
 
-PostSchema.methods.publicar = function() {
-  // Lógica para publicar o post
-};
-
-PostSchema.methods.editar = function(novoConteudo) {
-  this.conteudo = novoConteudo;
-  this.save();
-};
-
-PostSchema.methods.excluir = function() {
-  this.remove();
-};
-
-module.exports = mongoose.model('Post', PostSchema);
+const Post = mongoose.models.Post || mongoose.model('Post', PostSchema);
+export default Post;

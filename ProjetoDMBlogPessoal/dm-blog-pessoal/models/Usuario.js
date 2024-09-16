@@ -1,31 +1,31 @@
-const mongoose = require('mongoose');
-const Schema = mongoose.Schema;
+import mongoose from "mongoose";
+import bcrypt from "bcrypt";
+
+const { Schema } = mongoose;
 
 const UsuarioSchema = new Schema({
   nome: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   senha: { type: String, required: true },
-  posts: [{ type: Schema.Types.ObjectId, ref: 'Post' }]
+  posts: [{ type: Schema.Types.ObjectId, ref: "Post" }],
 });
 
-UsuarioSchema.methods.criarPost = function(titulo, conteudo, categoria, tags) {
-  const Post = mongoose.model('Post');
-  const novoPost = new Post({
-    titulo,
-    conteudo,
-    autor: this._id,
-    categoria,
-    tags
-  });
-  return novoPost.save();
+// Hash a senha antes de salvar
+UsuarioSchema.pre("save", async function (next) {
+  if (!this.isModified("senha")) {
+    return next();
+  }
+  const salt = await bcrypt.genSalt(10);
+  this.senha = await bcrypt.hash(this.senha, salt); // Corrigido para 'senha'
+  next();
+});
+
+// Método para comparar senhas
+UsuarioSchema.methods.comparePassword = function (candidatePassword) {
+  return bcrypt.compare(candidatePassword, this.senha); // Corrigido para 'senha'
 };
 
-UsuarioSchema.methods.editarPost = function(postId, novoConteudo) {
-  return Post.findByIdAndUpdate(postId, { conteudo: novoConteudo });
-};
+const Usuario =
+  mongoose.models.Usuario || mongoose.model("Usuario", UsuarioSchema);
 
-UsuarioSchema.methods.excluirPost = function(postId) {
-  return Post.findByIdAndDelete(postId);
-};
-
-module.exports = mongoose.model('Usuario', UsuarioSchema);
+export default Usuario;
