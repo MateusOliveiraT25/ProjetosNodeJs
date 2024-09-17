@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
 
-export default function PostPage() {
+export default function PostsPage() {
   const [posts, setPosts] = useState([]);
   const [error, setError] = useState(null);
   const router = useRouter();
@@ -13,21 +13,21 @@ export default function PostPage() {
       try {
         const token = localStorage.getItem("token");
         if (!token) {
-          router.push("/login"); // Redireciona para login se o usuário não estiver autenticado
+          router.push("/login");
           return;
         }
 
         const response = await fetch("/api/posts", {
           headers: {
-            Authorization: `Bearer ${token}`, // Envia o token no header da requisição
+            Authorization: `Bearer ${token}`,
           },
         });
 
         if (response.ok) {
           const data = await response.json();
-          setPosts(data.data || []); // Ajustado para usar o campo `data` da resposta
+          setPosts(data.data || []);
         } else if (response.status === 401) {
-          router.push("/login"); // Redireciona se o token for inválido
+          router.push("/login");
         } else {
           setError("Erro ao obter posts");
         }
@@ -66,8 +66,8 @@ export default function PostPage() {
     <div>
       <h1>Posts</h1>
       {error && <p style={{ color: "red" }}>{error}</p>}
-      <button onClick={() => router.push("posts/add-post")}>
-        Adicionar Novo Post
+      <button onClick={() => router.push("/posts/add-post")}>
+        Adicionar Post
       </button>
       <ul>
         {posts.map((post) => (
