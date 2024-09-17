@@ -22,7 +22,7 @@ export default function LoginPage() {
       if (response.ok) {
         const { token } = await response.json();
         localStorage.setItem("token", token);
-        router.push("/post");
+        router.push("/posts");
       } else {
         setError("Credenciais inválidas");
       }

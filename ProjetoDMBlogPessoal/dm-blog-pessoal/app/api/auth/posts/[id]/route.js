@@ -1,7 +1,7 @@
+// pages/api/posts/[id]/route.js
 import { updatePost, deletePost } from "@/controllers/PostController";
 import { NextResponse } from "next/server";
 
-// PUT - Atualizar post
 export async function PUT(request, { params }) {
   try {
     const data = await request.json();
@@ -24,7 +24,6 @@ export async function PUT(request, { params }) {
   }
 }
 
-// DELETE - Deletar post
 export async function DELETE(request, { params }) {
   try {
     const deletedPost = await deletePost(params.id);
