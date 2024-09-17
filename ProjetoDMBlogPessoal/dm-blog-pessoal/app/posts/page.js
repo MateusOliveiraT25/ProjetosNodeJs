@@ -5,7 +5,6 @@ import { useRouter } from "next/navigation";
 
 export default function PostPage() {
   const [posts, setPosts] = useState([]);
-  const [newPost, setNewPost] = useState("");
   const [error, setError] = useState(null);
   const router = useRouter();
 
@@ -41,31 +40,6 @@ export default function PostPage() {
     fetchPosts();
   }, [router]);
 
-  const addPost = async () => {
-    try {
-      const token = localStorage.getItem("token");
-      const response = await fetch("/api/posts", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: `Bearer ${token}`,
-        },
-        body: JSON.stringify({ title: newPost }),
-      });
-
-      const data = await response.json();
-      if (data.success) {
-        setPosts([...posts, data.data]); // Ajustado para usar `data.data`
-        setNewPost("");
-      } else {
-        setError("Erro ao adicionar post");
-      }
-    } catch (error) {
-      console.error("Erro ao adicionar post:", error);
-      setError("Erro ao adicionar post");
-    }
-  };
-
   const deletePost = async (id) => {
     try {
       const token = localStorage.getItem("token");
@@ -92,13 +66,9 @@ export default function PostPage() {
     <div>
       <h1>Posts</h1>
       {error && <p style={{ color: "red" }}>{error}</p>}
-      <input
-        type="text"
-        value={newPost}
-        onChange={(e) => setNewPost(e.target.value)}
-        placeholder="Novo post"
-      />
-      <button onClick={addPost}>Adicionar Post</button>
+      <button onClick={() => router.push("posts/add-post")}>
+        Adicionar Novo Post
+      </button>
       <ul>
         {posts.map((post) => (
           <li key={post._id}>

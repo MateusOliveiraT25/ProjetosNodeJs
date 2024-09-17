@@ -43,12 +43,11 @@ export async function GET(request) {
   }
 }
 
-// POST - Criar novo post
 export async function POST(request) {
   try {
     // Adiciona o middleware para autenticação
-    const response = await jwtMiddleware(request);
-    if (response) return response; // Se houver resposta do middleware (não autorizado), retorne-a
+    const middlewareResponse = await jwtMiddleware(request);
+    if (middlewareResponse) return middlewareResponse;
 
     // Obtenha os dados do corpo da requisição
     const data = await request.json();
@@ -62,10 +61,11 @@ export async function POST(request) {
     logger.error("Erro na rota POST:", {
       message: error.message,
       stack: error.stack,
-    }); // Registra o erro
+    });
     return NextResponse.json(
       { success: false, message: "Erro ao criar post" },
       { status: 400 }
     );
   }
 }
+
