@@ -2,6 +2,9 @@
 
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
+import styles from './page.css'; // Importe o CSS
+import Header from "../components/header";
+import Footer from "../components/footer";
 
 export default function PostsPage() {
   const [posts, setPosts] = useState([]);
@@ -63,7 +66,7 @@ export default function PostsPage() {
   };
 
   return (
-    <div>
+    <><Header /><><div>
       <h1>Posts</h1>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <button onClick={() => router.push("/posts/add-post")}>
@@ -77,6 +80,6 @@ export default function PostsPage() {
           </li>
         ))}
       </ul>
-    </div>
+    </div><Footer /></></>
   );
 }

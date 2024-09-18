@@ -2,6 +2,9 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import styles from './style.css'; // Importe o CSS
+import Header from "../components/header";
+import Footer from "../components/footer";
 
 export default function LoginPage() {
   const [username, setUsername] = useState("");
@@ -33,25 +36,25 @@ export default function LoginPage() {
   };
 
   return (
-    <div>
+    <><><Header /><div>
+
       <h1>Login</h1>
       {error && <p style={{ color: "red" }}>{error}</p>}
       <input
         type="text"
-        placeholder="Username"
+        placeholder="email"
         value={username}
-        onChange={(e) => setUsername(e.target.value)}
-      />
+        onChange={(e) => setUsername(e.target.value)} />
       <input
         type="password"
         placeholder="Password"
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
-      />
+        onChange={(e) => setPassword(e.target.value)} />
       <button onClick={handleLogin}>Login</button>
       <p>
         Não tem uma conta? <a href="/registro">Registre-se</a>
       </p>
-    </div>
+    </div></>
+    <Footer /></>
   );
 }

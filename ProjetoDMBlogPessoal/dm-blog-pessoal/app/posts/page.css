@@ -1,0 +1,84 @@
+/* page.css */
+
+/* Define a fonte padrão para a página */
+body {
+  font-family: Arial, sans-serif;
+  background-color: #1D2D50;
+  margin: 0;
+  padding: 0;
+  color: #333;
+}
+
+/* Estiliza o container principal da página */
+div {
+  max-width: 800px;
+  margin: 10px auto;
+  padding: 20px;
+  background-color: #4F4F4F;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Estiliza o título da página */
+h1 {
+  font-size: 2em;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+/* Estiliza a mensagem de erro */
+p {
+  color: red;
+  font-size: 1em;
+  margin: 0 0 20px;
+}
+
+/* Estiliza o botão de adicionar post */
+button {
+  background-color: • #D1D1D1;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 1em;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #005bb5;
+}
+
+/* Estiliza a lista de posts */
+ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+li {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* Estiliza o botão de excluir post */
+li button {
+  background-color: #e63946;
+  color: #fff;
+  border: none;
+  padding: 5px 10px;
+  font-size: 0.9em;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+li button:hover {
+  background-color: #d62839;
+}

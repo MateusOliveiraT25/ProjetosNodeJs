@@ -1,0 +1,33 @@
+/* header.css */
+
+/* Estiliza o header */
+.header {
+  background-color: #1D2D50;
+  color: #fff;
+  padding: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Estiliza a navegação */
+.nav {
+  display: flex;
+  gap: 10px;
+}
+
+/* Estiliza os links de navegação */
+.navLink {
+  color: #fff;
+  text-decoration: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  font-size: 1em;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.navLink:hover {
+  background-color: #005bb5;
+  color: #fff;
+}

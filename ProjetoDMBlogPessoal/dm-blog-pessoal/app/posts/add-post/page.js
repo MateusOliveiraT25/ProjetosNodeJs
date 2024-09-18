@@ -2,9 +2,16 @@
 
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import styles from './stylepadd.css'; // Importe o CSS
+
+
 
 export default function AddPostPage() {
-  const [title, setTitle] = useState("");
+  const [titulo, setTitulo] = useState("");
+  const [conteudo, setConteudo] = useState("");
+  const [autor, setAutor] = useState("");
+  const [categoria, setCategoria] = useState("");
+  const [comentarios, setComentarios] = useState("");
   const [error, setError] = useState(null);
   const router = useRouter();
 
@@ -24,7 +31,13 @@ export default function AddPostPage() {
           "Content-Type": "application/json",
           Authorization: `Bearer ${token}`,
         },
-        body: JSON.stringify({ title }),
+        body: JSON.stringify({
+          titulo,
+          conteudo,
+          autor, // Certifique-se de que o valor é o ID correto do autor
+          categoria, // Certifique-se de que o valor é o ID correto da categoria
+          comentarios: comentarios.split(",").map(comment => comment.trim()), // Transforme a string em um array de IDs
+        }),
       });
 
       const data = await response.json();
@@ -46,10 +59,36 @@ export default function AddPostPage() {
       <form onSubmit={handleAddPost}>
         <input
           type="text"
-          value={title}
-          onChange={(e) => setTitle(e.target.value)}
+          value={titulo}
+          onChange={(e) => setTitulo(e.target.value)}
           placeholder="Título do Post"
           required
+        />
+        <textarea
+          value={conteudo}
+          onChange={(e) => setConteudo(e.target.value)}
+          placeholder="Conteúdo do Post"
+          required
+        />
+        <input
+          type="text"
+          value={autor}
+          onChange={(e) => setAutor(e.target.value)}
+          placeholder="ID do Autor"
+          required
+        />
+        <input
+          type="text"
+          value={categoria}
+          onChange={(e) => setCategoria(e.target.value)}
+          placeholder="ID da Categoria"
+          required
+        />
+        <input
+          type="text"
+          value={comentarios}
+          onChange={(e) => setComentarios(e.target.value)}
+          placeholder="IDs dos Comentários (separados por vírgula)"
         />
         <button type="submit">Adicionar Post</button>
       </form>
